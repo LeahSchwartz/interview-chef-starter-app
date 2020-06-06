@@ -1,17 +1,18 @@
-from flask import Flask
 
-app = Flask(__name__)
+class CuisineKeeper:
 
+    def __init__(self):
+        self.dishes = set()
 
-@app.route('/', methods=['GET', 'POST'])
-def hello_world():
-    return 'Hello, World!'
+    def add_dish(self, dish):
+        self.dishes.add(dish)
 
+    def get_dishes(self):
+        return list(self.dishes)
 
+    def remove_dish(self, dish):
+        if self.has_dish(dish):
+            self.dishes.remove(dish)
 
-
-if __name__ == '__main__':
-    app.run()
-
-
-
+    def has_dish(self, dish):
+        return dish in self.dishes
